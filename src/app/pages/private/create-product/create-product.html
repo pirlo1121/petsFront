@@ -1,0 +1,29 @@
+<form (ngSubmit)="create()">
+    <h1>Create Product</h1>
+
+    <div class="field">
+        <label for="name"> Name: </label>
+        <input type="text" id="name" placeholder="tv" name="name" [(ngModel)]="name" >
+    </div>
+
+    <div class="field">
+        <label for="description"> description:</label>
+        <input type="text" id="description" placeholder="*******" name="description" [(ngModel)]="description">
+    </div>
+
+    <div class="field">
+        <label for="price"> Password:</label>
+        <input type="number" id="price" placeholder="*******" name="price" [(ngModel)]="price">
+    </div>
+
+
+    <label for="disponible">disponible</label>
+    <input type="checkbox" [(ngModel)]="disponible" name="disponible" id="disponible">
+
+    <input type="file" name="" id="">
+
+    <button type="submit">create</button>
+</form>
+
+
+
