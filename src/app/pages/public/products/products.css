@@ -1,0 +1,15 @@
+.card {
+    width: 300px;
+    margin: 3rem auto;
+    padding: 2rem;
+    font-family: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+button{
+    padding: 1rem;
+    font-size: 2rem;
+}

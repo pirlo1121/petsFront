@@ -8,6 +8,7 @@ import { Login } from './pages/public/login/login';
 import { Cart } from './pages/public/cart/cart';
 import { ProductDetail } from './pages/public/product-detail/product-detail';
 import { CreateProduct } from './pages/private/create-product/create-product';
+import { AllUsers } from './pages/private/all-users/all-users';
 
 export const routes: Routes = [
     { path: '', component: Home } ,
@@ -18,6 +19,8 @@ export const routes: Routes = [
     {path: 'cart', component: Cart},
 
     {path: 'product/:id', component: ProductDetail},
+    {path: 'allUsers', component: AllUsers},
+
     {path: 'createProduct', component: CreateProduct},
 
     { path: 'dashboard' , component: Dashboard }

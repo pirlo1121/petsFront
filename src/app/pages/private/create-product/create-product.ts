@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-create-product',
@@ -8,14 +9,17 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './create-product.css',
 })
 export class CreateProduct {
-  name: string = '';
-  description: string = '';
-  price: number = 0;
-  avalible: string = '';
-  disponible: boolean = false;
+
+
+     name:string ='';
+    description:string ='';
+    price:number = 0;
+    imagen:string ='';
+    avalible:string ='';
+    disponible:boolean =  false
 
 
   create(){
-    console.log( this.disponible )
+  
   }
 }
