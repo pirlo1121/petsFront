@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, signal} from '@angular/core';
 import { ProductService } from '../../../services/product-service';
 
 
@@ -11,6 +11,7 @@ import { ProductService } from '../../../services/product-service';
 export class Products {
 
   productService = inject(ProductService);
+  products = signal<any>([]);
 
 
   ngOnInit(){
@@ -18,6 +19,7 @@ export class Products {
   this.productService.getProducts().subscribe({
     next: (res: any)=>{
       console.log(res)
+      this.products.set(res.data);
     }, 
     error: (err: any)=>{
       console.log(err)
