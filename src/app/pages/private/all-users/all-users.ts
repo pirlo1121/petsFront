@@ -17,7 +17,7 @@ export class AllUsers {
 
     this.userService.getUsers().subscribe({
       next: (res:any)=>{
-        this.users.set(res.data)
+        this.users.set(res.data);
         console.log(res.data);
       },
       error: (err :any)=>{

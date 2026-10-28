@@ -19,6 +19,7 @@ export class CreateProduct {
     imagen:string ='';
 
   create():void {
+    
     const data = {
       name: this.name,
       description: this.description,

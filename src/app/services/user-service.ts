@@ -13,5 +13,9 @@ export class UserService {
     return this.http.get(this.apiUrl);
   }
 
+  createUser(data: any){
+    return this.http.post(this.apiUrl, data)
+  }
+
 
 }

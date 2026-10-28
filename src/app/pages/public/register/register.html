@@ -21,6 +21,15 @@
         <input type="password" id="password" placeholder="*******" name="password" [(ngModel)]="password">
     </div>
 
+    <div class="field">
+        <label for="ciudad"></label>
+        <select name="ciudad" id="ciudad" [(ngModel)]="ciudad">
+            <option value="bogota">bogota</option>
+            <option value="medellin">medellin</option>
+            <option value="cali">cali</option>
+        </select>
+    </div>
+
 
     <button type="submit">Registrate</button>
 </form>
