@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ProductService } from '../../../services/product-service';
+
 
 
 @Component({
@@ -11,7 +11,6 @@ import { ProductService } from '../../../services/product-service';
 })
 export class CreateProduct {
 
-  productService = inject(ProductService);
 
     name:string ='';
     description:string ='';
@@ -19,26 +18,9 @@ export class CreateProduct {
     imagen:string ='';
 
   create():void {
-    
-    const data = {
-      name: this.name,
-      description: this.description,
-      price: this.price,
-      imagen: this.imagen
-    }
-
-    this.productService.createProduct(data).subscribe({
-      next: (res:any)=>{
-        console.log(res);
-      },
-      error: (err:any)=>{
-        console.log(err);
-      }
-    })
-
-
-
-
 
   }
+
+
+
 }
