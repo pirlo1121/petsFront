@@ -1,0 +1,28 @@
+<section class="products">
+    <header class="products-header">
+        <h1>Productos</h1>
+        <p>{{ products().length }} productos disponibles</p>
+    </header>
+
+    <div class="grid">
+        @for (p of products(); track $index) {
+        <article class="card">
+            <div class="card-img">
+                <img [src]="p.imagen" [alt]="p.name" loading="lazy">
+            </div>
+
+            <div class="card-body">
+                <h2 class="card-title">{{ p.name }}</h2>
+                <p class="card-desc">{{ p.description }}</p>
+
+                <div class="card-footer">
+                    <span class="card-price">{{ p.price | currency }}</span>
+                    <button type="button" class="btn">Ver más</button>
+                </div>
+            </div>
+        </article>
+        } @empty {
+        <p class="empty">No hay productos disponibles.</p>
+        }
+    </div>
+</section>
