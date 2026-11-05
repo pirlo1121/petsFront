@@ -15,9 +15,16 @@ export class ProductService {
     return this.http.get(this.apiUrl);
   }
 
+
   createProduct(data:any){
     return this.http.post(this.apiUrl , data);
   }
+
+
+  getOneProduct(id: string){
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
 
   
 

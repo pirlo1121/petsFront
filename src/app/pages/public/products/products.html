@@ -17,7 +17,7 @@
 
                 <div class="card-footer">
                     <span class="card-price">{{ p.price | currency }}</span>
-                    <button type="button" class="btn">Ver más</button>
+                    <button type="button" class="btn" [routerLink]="['/product', p._id]" >Ver más</button>
                 </div>
             </div>
         </article>
