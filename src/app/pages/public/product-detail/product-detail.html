@@ -1,1 +1,30 @@
-<p>product-detail works!</p>
+<!-- product-detail.component.html -->
+<section class="detail">
+
+  <div class="detail__grid">
+    <div class="detail__media">
+      <img [src]="product().imagen" [alt]="product().name" />
+    </div>
+
+    <div class="detail__info">
+      <h1 class="detail__title">{{ product().name }}</h1>
+
+      <p class="detail__price">
+        {{ product().price | currency: 'USD' : 'symbol' : '1.2-2' }}
+      </p>
+
+      <div class="detail__section">
+        <h2 class="detail__subtitle">Descripción</h2>
+        <p class="detail__description">{{ product().description }}</p>
+      </div>
+
+      <button type="button" class="btn btn--secondary">Comprar ahora</button>
+
+      <ul class="detail__perks">
+        <li>Envío gratis a todo el país</li>
+        <li>Garantía de 12 meses</li>
+        <li>Devoluciones hasta 30 días</li>
+      </ul>
+    </div>
+  </div>
+</section>
