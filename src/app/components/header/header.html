@@ -5,7 +5,15 @@
       <li><a routerLink="products">productos</a></li>
       <li><a routerLink="contact">contacto</a></li>
       <li><a routerLink="dashboard">dashboard</a></li>
+
+      @if( userService.isLogged() ) {
+      <li><button (click)="logout()"> Logout </button></li>
+
+      } @else {
       <li><a routerLink="login">login</a></li>
+
+      }
+
 
 
 

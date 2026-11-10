@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-header',
@@ -7,4 +8,23 @@ import { RouterLink } from '@angular/router';
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
-export class Header {}
+export class Header {
+
+
+  userService = inject(UserService);
+
+
+  logout(){
+    this.userService.logout().subscribe({
+      next: (res: any)=>{
+        this.userService.user.set(null);
+        localStorage.removeItem('user')
+        console.log(res)
+      },
+      error: (err:any)=>{
+        console.log(err);
+      }
+    })
+  }
+
+}
