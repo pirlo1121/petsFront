@@ -11,6 +11,10 @@ export class UserService {
   private apiUrl: string = 'http://localhost:3000';
   user = signal<any>( JSON.parse(localStorage.getItem('user') || 'null') );
 
+  getUsers(){
+    return this.http.get(this.apiUrl+'/users');
+  }
+
   createUser(data:any){
     return this.http.post(this.apiUrl+'/users', data );
   }
