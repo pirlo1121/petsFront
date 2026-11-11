@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../services/user-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -12,27 +13,35 @@ import { UserService } from '../../../services/user-service';
 export class Login {
 
   userService = inject(UserService);
-
+  route = inject(Router)
   email: string = '';
   password: string = '';
-  message: string = '';
 
-  login():void{
-    const data= {
+  login(): void {
+    const data = {
       email: this.email,
       password: this.password
     }
     this.userService.login(data).subscribe({
-      next: (res: any)=> {
-        localStorage.setItem('user', JSON.stringify(res.data) );
+      next: (res: any) => {
+
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sesion iniciada",
+          showConfirmButton: false,
+          timer: 1200
+        });
+        localStorage.setItem('user', JSON.stringify(res.data));
         this.userService.user.set(res.data);
-        console.log(res);
+        this.route.navigateByUrl( res.data.role === 'admin'  ? '/dashboard' : '/products')
       },
-      error: (err: any)=> {
+      error: (err: any) => {
+
         console.log(err)
       }
     })
-    
+
 
   }
 

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UserService } from '../../services/user-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -12,16 +13,22 @@ export class Header {
 
 
   userService = inject(UserService);
+  
 
-
-  logout(){
+  logout() {
     this.userService.logout().subscribe({
-      next: (res: any)=>{
+      next: (res: any) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Sesion cerrada",
+          showConfirmButton: false,
+          timer: 1200
+        });
         this.userService.user.set(null);
         localStorage.removeItem('user')
-        console.log(res)
       },
-      error: (err:any)=>{
+      error: (err: any) => {
         console.log(err);
       }
     })
