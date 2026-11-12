@@ -19,6 +19,10 @@ export class UserService {
     return this.http.post(this.apiUrl+'/users', data );
   }
 
+  changeRole(id: string, data: any){
+    return this.http.patch(`${this.apiUrl}/users/${id}`, data );
+  }
+
   login(data: any){
     return this.http.post(this.apiUrl+'/login', data, {withCredentials:true});
   }

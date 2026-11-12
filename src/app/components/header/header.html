@@ -4,7 +4,11 @@
       <li><a routerLink="">inicio</a></li>
       <li><a routerLink="products">productos</a></li>
       <li><a routerLink="contact">contacto</a></li>
-      <li><a routerLink="dashboard">dashboard</a></li>
+
+      @if(userService.isAdmin() ){
+        <li><a routerLink="dashboard">dashboard</a></li>
+      }
+
 
       @if( userService.isLogged() ) {
       <li><button (click)="logout()"> Logout </button></li>
@@ -13,9 +17,6 @@
       <li><a routerLink="login">login</a></li>
 
       }
-
-
-
 
     </ul>
   </nav>
