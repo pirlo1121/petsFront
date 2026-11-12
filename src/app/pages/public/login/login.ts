@@ -26,6 +26,7 @@ export class Login {
       next: (res: any) => {
 
         Swal.fire({
+          theme: "dark",
           position: "top-end",
           icon: "success",
           title: "Sesion iniciada",

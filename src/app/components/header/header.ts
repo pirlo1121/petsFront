@@ -20,6 +20,7 @@ export class Header {
       next: (res: any) => {
         this.route.navigateByUrl('/');
         Swal.fire({
+          theme: "dark",
           position: "top-end",
           icon: "success",
           title: "Sesion cerrada",
