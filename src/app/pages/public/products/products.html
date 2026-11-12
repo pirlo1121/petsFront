@@ -1,28 +1,28 @@
-<section class="products">
-    <header class="products-header">
+<section class="container">
+    <header class="page-header">
         <h1>Productos</h1>
         <p>{{ products().length }} productos disponibles</p>
     </header>
 
     <div class="grid">
         @for (p of products(); track $index) {
-        <article class="card">
-            <div class="card-img">
+        <article class="card product-card">
+            <div class="product-card__media">
                 <img [src]="p.imagen" [alt]="p.name" loading="lazy">
             </div>
 
-            <div class="card-body">
-                <h2 class="card-title">{{ p.name }}</h2>
-                <p class="card-desc">{{ p.description }}</p>
+            <div class="product-card__body">
+                <h2 class="product-card__title">{{ p.name }}</h2>
+                <p class="product-card__desc">{{ p.description }}</p>
 
-                <div class="card-footer">
-                    <span class="card-price">{{ p.price | currency }}</span>
-                    <button type="button" class="btn" [routerLink]="['/product', p._id]" >Ver más</button>
+                <div class="product-card__footer">
+                    <span class="product-card__price">{{ p.price | currency }}</span>
+                    <button type="button" class="btn btn--primary btn--sm" [routerLink]="['/product', p._id]">Ver más</button>
                 </div>
             </div>
         </article>
         } @empty {
-        <p class="empty">No hay productos disponibles.</p>
+        <p class="empty-state">No hay productos disponibles.</p>
         }
     </div>
 </section>

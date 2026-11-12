@@ -1,7 +1,5 @@
-<!-- product-detail.component.html -->
-<section class="detail">
-
-  <div class="detail__grid">
+<section class="container">
+  <div class="detail">
     <div class="detail__media">
       <img [src]="product().imagen" [alt]="product().name" />
     </div>
@@ -11,7 +9,6 @@
 
       <p class="detail__price">
         {{ product().price | currency: 'USD' : 'symbol' : '1.2-2' }}
-
       </p>
 
       <div class="detail__section">
@@ -19,7 +16,7 @@
         <p class="detail__description">{{ product().description }}</p>
       </div>
 
-      <button type="button" class="btn btn--secondary">Comprar ahora</button>
+      <button type="button" class="btn btn--primary btn--lg btn--block">Comprar ahora</button>
 
       <ul class="detail__perks">
         <li>Envío gratis a todo el país</li>

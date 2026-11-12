@@ -1,19 +1,22 @@
-<form (ngSubmit)="login()">
-    <h1>LOGIN</h1>
-    <div class="field">
-        <label for="email"> Email: </label>
-        <input type="email" id="email" placeholder="example@gmail.com" name="email" [(ngModel)]="email" >
-    </div>
+<section class="container container--narrow">
+    <form class="card form-card" (ngSubmit)="login()">
+        <h1>LOGIN</h1>
 
-    <div class="field">
-        <label for="password"> Password:</label>
-        <input type="password" id="password" placeholder="*******" name="password" [(ngModel)]="password">
-    </div>
+        <div class="field">
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="example@gmail.com" name="email" [(ngModel)]="email">
+        </div>
 
+        <div class="field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="*******" name="password" [(ngModel)]="password">
+        </div>
 
+        <button class="btn btn--primary btn--block" type="submit">Login</button>
 
-    <button type="submit">Login</button>
-    <span>no tienes una cuenta?</span>
-    <a routerLink="/register">crea una</a>
-</form>
-
+        <p class="form-card__footer">
+            no tienes una cuenta?
+            <a routerLink="/register">crea una</a>
+        </p>
+    </form>
+</section>

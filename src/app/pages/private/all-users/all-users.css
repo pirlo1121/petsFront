@@ -1,74 +1,7 @@
-.users {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 20px;
-}
-
-.users__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.users__title {
-    color: #333;
-    font-size: 24px;
-}
-
-.users__count {
-    color: #777;
-    font-size: 14px;
-}
-
-.users__table-wrapper {
-    overflow-x: auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-.users__table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-    background-color: #fff;
-}
-
-.users__table th {
-    padding: 14px 16px;
-    text-align: left;
-    font-weight: 600;
-    color: #555;
-    background-color: #f9f9f9;
-    border-bottom: 1px solid #ddd;
-    white-space: nowrap;
-}
-
-.users__table td {
-    padding: 14px 16px;
-    color: #333;
-    border-bottom: 1px solid #eee;
-    vertical-align: middle;
-}
-
-.users__table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.users__table tbody tr:hover {
-    background-color: #f5faff;
-}
-
-.users__actions-col {
-    text-align: right;
-    width: 1%;
-    white-space: nowrap;
-}
-
 .user {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .user__avatar {
@@ -78,56 +11,14 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background-color: #2196F3;
-    color: #fff;
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-hover);
     font-weight: 600;
-    font-size: 13px;
+    font-size: 0.8rem;
     flex-shrink: 0;
 }
 
 .user__name {
     font-weight: 600;
-    color: #333;
-}
-
-.badge {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 600;
-}
-
-.badge--admin {
-    background-color: #e3f2fd;
-    color: #0b7dda;
-}
-
-.badge--user {
-    background-color: #f0f0f0;
-    color: #666;
-}
-
-.btn {
-    padding: 8px 14px;
-    border: none;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn--primary {
-    background-color: #2196F3;
-    color: #fff;
-}
-
-.btn--primary:hover {
-    background-color: #0b7dda;
-}
-
-.btn--primary:active {
-    transform: scale(0.98);
+    color: var(--color-ink);
 }

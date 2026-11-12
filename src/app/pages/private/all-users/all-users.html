@@ -1,17 +1,17 @@
-<section class="users">
-    <div class="users__header">
-        <h1 class="users__title">Usuarios</h1>
-        <span class="users__count"> {{users().length}} usuarios </span>
-    </div>
+<section class="container">
+    <header class="page-header page-header--row">
+        <h1>Usuarios</h1>
+        <span class="text-muted">{{users().length}} usuarios</span>
+    </header>
 
-    <div class="users__table-wrapper">
-        <table class="users__table">
+    <div class="table-wrapper">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Email</th>
                     <th>Rol</th>
-                    <th class="users__actions-col">Acciones</th>
+                    <th class="table__actions">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,12 +25,12 @@
                         </td>
                         <td>{{ u.email }}</td>
                         <td>
-                            <span class="badge" [class.badge--admin]="u.role === 'admin'" [class.badge--user]="u.role !== 'admin'">
+                            <span class="badge" [class.badge--primary]="u.role === 'admin'">
                                 {{ u.role }}
                             </span>
                         </td>
-                        <td class="users__actions-col">
-                            <button class="btn btn--primary" type="button" (click)="changeRole(u._id ,u.role )" >Cambiar role</button>
+                        <td class="table__actions">
+                            <button class="btn btn--primary btn--sm" type="button" (click)="changeRole(u._id, u.role)">Cambiar role</button>
                         </td>
                     </tr>
                 }

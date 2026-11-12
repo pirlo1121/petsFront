@@ -1,23 +1,23 @@
-<header>
-  <nav>
-    <ul>
-      <li><a routerLink="">inicio</a></li>
-      <li><a routerLink="products">productos</a></li>
-      <li><a routerLink="contact">contacto</a></li>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-brand" routerLink="">PetsFront</a>
 
-      @if(userService.isAdmin() ){
-        <li><a routerLink="dashboard">dashboard</a></li>
-      }
+    <nav class="site-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a class="nav-link" routerLink="">Inicio</a></li>
+        <li><a class="nav-link" routerLink="products">Productos</a></li>
+        <li><a class="nav-link" routerLink="contact">Contacto</a></li>
 
+        @if(userService.isAdmin() ){
+          <li><a class="nav-link" routerLink="dashboard">Dashboard</a></li>
+        }
 
-      @if( userService.isLogged() ) {
-      <li><button (click)="logout()"> Logout </button></li>
-
-      } @else {
-      <li><a routerLink="login">login</a></li>
-
-      }
-
-    </ul>
-  </nav>
+        @if( userService.isLogged() ) {
+          <li><button class="btn btn--secondary btn--sm" type="button" (click)="logout()">Logout</button></li>
+        } @else {
+          <li><a class="btn btn--primary btn--sm" routerLink="login">Login</a></li>
+        }
+      </ul>
+    </nav>
+  </div>
 </header>
