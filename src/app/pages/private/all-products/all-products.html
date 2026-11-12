@@ -1,0 +1,40 @@
+<section class="container">
+    <header class="page-header page-header--row">
+        <h1>Productos</h1>
+        <span class="text-muted">{{ products().length }} productos</span>
+    </header>
+
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th class="table__actions">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (p of products(); track $index) {
+                    <tr>
+                        <td>
+                            <img [src]="p.imagen" [alt]="p.name" width="48" height="48" loading="lazy">
+                        </td>
+                        <td>{{ p.name }}</td>
+                        <td>{{ p.description }}</td>
+                        <td>{{ p.price }}</td>
+                        <td class="table__actions">
+                            <button class="btn btn--secondary btn--sm" type="button" [routerLink]="['/updateProduct', p._id]" >Update</button>
+                            <button class="btn btn--secondary btn--sm" type="button">Delete</button>
+                        </td>
+                    </tr>
+                } @empty {
+                    <tr>
+                        <td colspan="5" class="empty-state">No hay productos disponibles.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>

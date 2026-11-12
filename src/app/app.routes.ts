@@ -9,6 +9,8 @@ import { Cart } from './pages/public/cart/cart';
 import { ProductDetail } from './pages/public/product-detail/product-detail';
 import { CreateProduct } from './pages/private/create-product/create-product';
 import { AllUsers } from './pages/private/all-users/all-users';
+import { UpdateProduct } from './pages/private/update-product/update-product';
+import { AllProducts } from './pages/private/all-products/all-products';
 
 export const routes: Routes = [
     { path: '', component: Home } ,
@@ -18,7 +20,9 @@ export const routes: Routes = [
     {path: 'login', component: Login},
     {path: 'cart', component: Cart},
 
+    { path: 'allProducts' , component: AllProducts },
     {path: 'product/:id', component: ProductDetail},
+    {path: 'updateProduct/:id', component: UpdateProduct},
     {path: 'allUsers', component: AllUsers},
 
     {path: 'createProduct', component: CreateProduct},
