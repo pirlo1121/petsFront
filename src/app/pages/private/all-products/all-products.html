@@ -35,7 +35,7 @@
                         <td class="product__price">$ {{ product.price }}</td>
                         <td class="table__actions">
                             <div class="actions">
-                                <button class="btn btn--secondary btn--sm" type="button">Actualizar</button>
+                                <button [routerLink]="['/updateProduct', product._id]" class="btn btn--secondary btn--sm" type="button" >Actualizar</button>
                                 <button class="btn btn--danger btn--sm" type="button">Eliminar</button>
                             </div>
                         </td>

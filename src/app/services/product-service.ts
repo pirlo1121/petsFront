@@ -26,6 +26,12 @@ export class ProductService {
   }
 
 
+  updateProduct(id: string, data:any){
+    return this.http.patch(`${this.apiUrl}/${id}`, data);
+  }
+
+  
+
   
 
 }
