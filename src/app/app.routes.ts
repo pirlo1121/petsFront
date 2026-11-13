@@ -9,6 +9,7 @@ import { Cart } from './pages/public/cart/cart';
 import { ProductDetail } from './pages/public/product-detail/product-detail';
 import { CreateProduct } from './pages/private/create-product/create-product';
 import { AllUsers } from './pages/private/all-users/all-users';
+import { AllProducts } from './pages/private/all-products/all-products';
 
 export const routes: Routes = [
     { path: '', component: Home } ,
@@ -20,9 +21,9 @@ export const routes: Routes = [
 
     {path: 'product/:id', component: ProductDetail},
     {path: 'allUsers', component: AllUsers},
+    {path: 'allProducts', component: AllProducts},
 
     {path: 'createProduct', component: CreateProduct},
-
     { path: 'dashboard' , component: Dashboard }
 
 ];
