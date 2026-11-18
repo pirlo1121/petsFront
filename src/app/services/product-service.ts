@@ -30,7 +30,11 @@ export class ProductService {
     return this.http.patch(`${this.apiUrl}/${id}`, data);
   }
 
-  
+  deleteProduct(id: string){
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
+
 
   
 
