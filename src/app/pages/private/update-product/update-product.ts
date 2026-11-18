@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product-service';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-product',
@@ -13,19 +14,17 @@ export class UpdateProduct {
 
   productService = inject(ProductService);
   route = inject(ActivatedRoute);
-
   id: string = '';
-
   name = signal<string>('');
   description = signal<string>('');
-  price= signal<number>(0);
+  price = signal<number>(0);
   imagen = signal<string>('');
 
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.productService.getOneProduct(this.id).subscribe({
-      next: (res:any)=>{
+      next: (res: any) => {
         console.log(res);
         this.name.set(res.data.name);
         this.description.set(res.data.description);
@@ -33,7 +32,7 @@ export class UpdateProduct {
         this.imagen.set(res.data.imagen);
 
       },
-      error: (err:any)=>{
+      error: (err: any) => {
         console.log(err);
       }
     })
@@ -45,13 +44,49 @@ export class UpdateProduct {
   update(): void {
 
     const data = {
-      name: this.name,
-      description: this.description,
-      price: this.price,
-      imagen: this.imagen
+      name: this.name(),
+      description: this.description(),
+      price: this.price(),
+      imagen: this.imagen()
     }
 
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#297c00",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, update it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
 
+        this.productService.updateProduct(this.id, data).subscribe({
+          next: (res: any) => {
+            console.log(res);
+          },
+          error: (err: any) => {
+            console.log(err);
+          }
+        })
+
+        Swal.fire({
+          title: "updated!",
+          text: "Your file has been updated.",
+          icon: "success"
+        });
+
+      }
+      if (!result.isConfirmed) {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "cancelado",
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }
+    });
   }
 
 
