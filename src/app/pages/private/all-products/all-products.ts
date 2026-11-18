@@ -34,20 +34,26 @@ export class AllProducts {
       if (result.isConfirmed) {
         this.productService.deleteProduct(id).subscribe({
           next: (res: any) => {
+             Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
             console.log(res);
             this.loadData();
 
           },
           error: (err: any) => {
+             Swal.fire({
+          title: "error!",
+          text: "error",
+          icon: "error"
+        });
             console.log(err)
           }
         })
 
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
+       
       }
       if (!result.isConfirmed) {
               Swal.fire({

@@ -20,7 +20,7 @@ export class UserService {
   }
 
   changeRole(id: string, data: any){
-    return this.http.patch(`${this.apiUrl}/users/${id}`, data );
+    return this.http.patch(`${this.apiUrl}/users/${id}`, data, { withCredentials:true } );
   }
 
   login(data: any){

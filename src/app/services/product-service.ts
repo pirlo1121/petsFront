@@ -17,7 +17,7 @@ export class ProductService {
 
 
   createProduct(data:any){
-    return this.http.post(this.apiUrl , data);
+    return this.http.post(this.apiUrl , data, { withCredentials:true });
   }
 
 
@@ -27,11 +27,11 @@ export class ProductService {
 
 
   updateProduct(id: string, data:any){
-    return this.http.patch(`${this.apiUrl}/${id}`, data);
+    return this.http.patch(`${this.apiUrl}/${id}`, data, { withCredentials:true });
   }
 
   deleteProduct(id: string){
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials:true });
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product-service';
+import Swal from 'sweetalert2';
 
 
 
@@ -14,12 +15,12 @@ export class CreateProduct {
 
   productService = inject(ProductService);
 
-    name:string ='';
-    description:string ='';
-    price:number = 0;
-    imagen:string ='';
+  name: string = '';
+  description: string = '';
+  price: number = 0;
+  imagen: string = '';
 
-  create():void {
+  create(): void {
 
     const data = {
       name: this.name,
@@ -29,10 +30,17 @@ export class CreateProduct {
     }
 
     this.productService.createProduct(data).subscribe({
-      next: (res)=>{
-        console.log(res);
-      }, 
-      error: (err:any)=>{
+      next: (res) => {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "creado",
+            showConfirmButton: false,
+            timer: 1200
+          });
+        
+      },
+      error: (err: any) => {
         console.log(err);
       }
     });
