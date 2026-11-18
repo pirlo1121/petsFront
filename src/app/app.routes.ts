@@ -11,6 +11,7 @@ import { CreateProduct } from './pages/private/create-product/create-product';
 import { AllUsers } from './pages/private/all-users/all-users';
 import { AllProducts } from './pages/private/all-products/all-products';
 import { UpdateProduct } from './pages/private/update-product/update-product';
+import { adminGuard } from './guards/admin-guard';
 
 export const routes: Routes = [
     { path: '', component: Home } ,
@@ -21,10 +22,10 @@ export const routes: Routes = [
     {path: 'cart', component: Cart},
 
     {path: 'product/:id', component: ProductDetail},
-    {path: 'allUsers', component: AllUsers},
-    {path: 'allProducts', component: AllProducts},
-    {path: 'updateProduct/:id', component: UpdateProduct},
-    {path: 'createProduct', component: CreateProduct},
-    { path: 'dashboard' , component: Dashboard }
+    {path: 'allUsers', canActivate: [adminGuard] , component: AllUsers},
+    {path: 'allProducts', canActivate: [adminGuard] , component: AllProducts},
+    {path: 'updateProduct/:id', canActivate: [adminGuard] , component: UpdateProduct},
+    {path: 'createProduct', canActivate: [adminGuard] ,  component: CreateProduct},
+    { path: 'dashboard' , canActivate: [adminGuard] ,component: Dashboard }
 
 ];
