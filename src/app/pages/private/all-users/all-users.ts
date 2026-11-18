@@ -1,5 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { UserService } from '../../../services/user-service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '../../../interfaces/api-response';
+import { User } from '../../../interfaces/user';
 
 
 @Component({
@@ -11,22 +14,22 @@ import { UserService } from '../../../services/user-service';
 export class AllUsers {
 
   userService = inject(UserService);
-  users=signal<any>([]);
+  users=signal<User[]>([]);
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.loadData();
   }
 
-  changeRole(id:string, userRole: string){
+  changeRole(id: string, userRole: string): void {
 
-    let role = userRole === 'user' ? 'admin' : 'user'
+    let role: string = userRole === 'user' ? 'admin' : 'user'
 
     this.userService.changeRole(id, {role: role}).subscribe({
-      next: (res:any)=>{
+      next: (res: ApiResponse<User>)=>{
         this.loadData();
         console.log(res);
       },
-      error: (err: any)=>{
+      error: (err: HttpErrorResponse)=>{
         console.log(err)
       }
     })
@@ -34,13 +37,13 @@ export class AllUsers {
   }
 
 
-  loadData(){
+  loadData(): void {
     this.userService.getUsers().subscribe({
-      next: (res:any) => {
+      next: (res: ApiResponse<User[]>) => {
         console.log(res);
         this.users.set(res.data);
       }, 
-      error: (err:any)=>{
+      error: (err: HttpErrorResponse)=>{
         console.log(err);
       }
     })

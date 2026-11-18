@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '../../interfaces/api-response';
 
 @Component({
   selector: 'app-header',
@@ -15,9 +17,9 @@ export class Header {
   userService = inject(UserService);
   
 
-  logout() {
+  logout(): void {
     this.userService.logout().subscribe({
-      next: (res: any) => {
+      next: (res: ApiResponse<null>) => {
         this.route.navigateByUrl('/');
         Swal.fire({
           theme: "dark",
@@ -30,7 +32,7 @@ export class Header {
         this.userService.user.set(null);
         localStorage.removeItem('user');
       },
-      error: (err: any) => {
+      error: (err: HttpErrorResponse) => {
         console.log(err);
       }
     })

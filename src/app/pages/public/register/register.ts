@@ -1,6 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../../../services/user-service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '../../../interfaces/api-response';
+import { User } from '../../../interfaces/user';
 
 
 @Component({
@@ -20,18 +23,18 @@ export class Register {
   password: string = '';
 
 
-  register(){
-    const data = {
+  register(): void {
+    const data: User = {
       name: this.name,
       lastName: this.lastName,
       email: this.email,
       password: this.password
     }
     this.userService.createUser(data).subscribe({
-      next: (res:any)=> {
+      next: (res: ApiResponse<User>)=> {
         console.log(res)
       },
-      error: (err: any)=> {
+      error: (err: HttpErrorResponse)=> {
         console.log(err)
       }
     })

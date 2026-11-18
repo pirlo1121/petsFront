@@ -2,6 +2,9 @@ import { Component, inject, signal } from '@angular/core';
 import { ProductService } from '../../../services/product-service';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '../../../interfaces/api-response';
+import { Product } from '../../../interfaces/product';
 
 @Component({
   selector: 'app-all-products',
@@ -12,14 +15,14 @@ import Swal from 'sweetalert2';
 export class AllProducts {
 
   productService = inject(ProductService);
-  products = signal<any>([]);
+  products = signal<Product[]>([]);
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadData()
   }
 
 
-  delete(id: string) {
+  delete(id: string): void {
 
 
     Swal.fire({
@@ -33,7 +36,7 @@ export class AllProducts {
     }).then((result) => {
       if (result.isConfirmed) {
         this.productService.deleteProduct(id).subscribe({
-          next: (res: any) => {
+          next: (res: ApiResponse<Product>) => {
              Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -43,7 +46,7 @@ export class AllProducts {
             this.loadData();
 
           },
-          error: (err: any) => {
+          error: (err: HttpErrorResponse) => {
              Swal.fire({
           title: "error!",
           text: "error",
@@ -68,14 +71,14 @@ export class AllProducts {
   }
 
 
-  loadData() {
+  loadData(): void {
 
     this.productService.getProducts().subscribe({
-      next: (res: any) => {
+      next: (res: ApiResponse<Product[]>) => {
         this.products.set(res.data);
         console.log(res);
       },
-      error: (err: any) => {
+      error: (err: HttpErrorResponse) => {
         console.log(err)
       }
     })

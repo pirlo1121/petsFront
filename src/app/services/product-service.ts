@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { ApiResponse } from '../interfaces/api-response';
+import { Product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root',
@@ -12,26 +14,26 @@ export class ProductService {
 
 
   getProducts(){
-    return this.http.get(this.apiUrl);
+    return this.http.get<ApiResponse<Product[]>>(this.apiUrl);
   }
 
 
-  createProduct(data:any){
-    return this.http.post(this.apiUrl , data, { withCredentials:true });
+  createProduct(data: Product){
+    return this.http.post<ApiResponse<Product>>(this.apiUrl , data, { withCredentials:true });
   }
 
 
   getOneProduct(id: string){
-    return this.http.get(`${this.apiUrl}/${id}`);
+    return this.http.get<ApiResponse<Product>>(`${this.apiUrl}/${id}`);
   }
 
 
-  updateProduct(id: string, data:any){
-    return this.http.patch(`${this.apiUrl}/${id}`, data, { withCredentials:true });
+  updateProduct(id: string, data: Product){
+    return this.http.patch<ApiResponse<Product>>(`${this.apiUrl}/${id}`, data, { withCredentials:true });
   }
 
   deleteProduct(id: string){
-    return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials:true });
+    return this.http.delete<ApiResponse<Product>>(`${this.apiUrl}/${id}`, { withCredentials:true });
   }
 
 

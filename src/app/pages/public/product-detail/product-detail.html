@@ -1,19 +1,19 @@
 <section class="container">
   <div class="detail">
     <div class="detail__media">
-      <img [src]="product().imagen" [alt]="product().name" />
+      <img [src]="product()?.imagen" [alt]="product()?.name" />
     </div>
 
     <div class="detail__info">
-      <h1 class="detail__title">{{ product().name }}</h1>
+      <h1 class="detail__title">{{ product()?.name }}</h1>
 
       <p class="detail__price">
-        {{ product().price | currency: 'USD' : 'symbol' : '1.2-2' }}
+        {{ product()?.price | currency: 'USD' : 'symbol' : '1.2-2' }}
       </p>
 
       <div class="detail__section">
         <h2 class="detail__subtitle">Descripción</h2>
-        <p class="detail__description">{{ product().description }}</p>
+        <p class="detail__description">{{ product()?.description }}</p>
       </div>
 
       <button type="button" class="btn btn--primary btn--lg btn--block">Comprar ahora</button>

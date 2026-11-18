@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../services/product-service';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '../../../interfaces/api-response';
+import { Product } from '../../../interfaces/product';
 
 @Component({
   selector: 'app-update-product',
@@ -24,7 +27,7 @@ export class UpdateProduct {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.productService.getOneProduct(this.id).subscribe({
-      next: (res: any) => {
+      next: (res: ApiResponse<Product>) => {
         console.log(res);
         this.name.set(res.data.name);
         this.description.set(res.data.description);
@@ -32,7 +35,7 @@ export class UpdateProduct {
         this.imagen.set(res.data.imagen);
 
       },
-      error: (err: any) => {
+      error: (err: HttpErrorResponse) => {
         console.log(err);
       }
     })
@@ -43,7 +46,7 @@ export class UpdateProduct {
 
   update(): void {
 
-    const data = {
+    const data: Product = {
       name: this.name(),
       description: this.description(),
       price: this.price(),
@@ -62,10 +65,10 @@ export class UpdateProduct {
       if (result.isConfirmed) {
 
         this.productService.updateProduct(this.id, data).subscribe({
-          next: (res: any) => {
+          next: (res: ApiResponse<Product>) => {
             console.log(res);
           },
-          error: (err: any) => {
+          error: (err: HttpErrorResponse) => {
             console.log(err);
           }
         })

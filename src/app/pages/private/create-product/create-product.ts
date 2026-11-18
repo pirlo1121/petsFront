@@ -2,6 +2,9 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../../services/product-service';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ApiResponse } from '../../../interfaces/api-response';
+import { Product } from '../../../interfaces/product';
 
 
 
@@ -22,7 +25,7 @@ export class CreateProduct {
 
   create(): void {
 
-    const data = {
+    const data: Product = {
       name: this.name,
       description: this.description,
       price: this.price,
@@ -30,7 +33,7 @@ export class CreateProduct {
     }
 
     this.productService.createProduct(data).subscribe({
-      next: (res) => {
+      next: (res: ApiResponse<Product>) => {
           Swal.fire({
             position: "center",
             icon: "success",
@@ -40,7 +43,7 @@ export class CreateProduct {
           });
         
       },
-      error: (err: any) => {
+      error: (err: HttpErrorResponse) => {
         console.log(err);
       }
     });

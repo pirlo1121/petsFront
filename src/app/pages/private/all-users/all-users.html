@@ -19,7 +19,7 @@
                     <tr>
                         <td>
                             <div class="user">
-                                <span class="user__avatar">{{ u.name.charAt(0) }}</span>
+                                <span class="user__avatar">{{ u.name?.charAt(0) }}</span>
                                 <span class="user__name">{{ u.name }}</span>
                             </div>
                         </td>
@@ -30,7 +30,7 @@
                             </span>
                         </td>
                         <td class="table__actions">
-                            <button class="btn btn--primary btn--sm" type="button" (click)="changeRole(u._id, u.role)">Cambiar role</button>
+                            <button class="btn btn--primary btn--sm" type="button" (click)="changeRole(u._id!, u.role!)">Cambiar role</button>
                         </td>
                     </tr>
                 }
